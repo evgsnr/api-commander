@@ -7,7 +7,11 @@
 ![Electron](https://img.shields.io/badge/Electron-desktop-555)
 ![Development](https://img.shields.io/badge/development-AI--assisted-555)
 
-**API Commander** is a desktop HTTP API client for Windows, designed for everyday REST API workflows, request collections, and SAP OData integrations. Your workspace stays local — no account, cloud service, or separate server required.
+API Commander is a small desktop client for working with HTTP APIs.
+
+I work with integrations and APIs regularly, so I wanted a tool for the things I do most often: sending requests, organizing collections, switching environments, and working with SAP OData.
+
+It runs on Windows, keeps data locally, and doesn't require an account. I decided to share it in case someone else finds it useful.
 
 **[⬇ Download API Commander for Windows](https://github.com/evgsnr/api-commander/releases/latest)** · [All releases](https://github.com/evgsnr/api-commander/releases)
 
@@ -24,7 +28,7 @@
 
 </details>
 
-## What it's for
+## Why I made it
 
 - **Everyday HTTP API work:** requests, parameters, headers, bodies, and response inspection.
 - **System analysis workflows:** collections, environments, `{{name}}` variables, history, and importing existing requests.
@@ -45,7 +49,7 @@
 | SAP OData | Automatic/manual CSRF fetch, cookie sessions, token caching |
 | Storage | Local encrypted workspace, manual and automatic locking |
 
-## What's new in v2.1.0 — Calm UI
+## What's new in v2.1.0
 
 A redesigned, more compact interface with more editor space, light and dark themes, and adaptive side-by-side or stacked request/response panels.
 
@@ -82,6 +86,6 @@ Built with **Electron / Node.js**. The Renderer handles the UI; privileged opera
 
 ## Development approach
 
-Built with **AI-assisted development**: the author led the product concept, requirements, architecture, and AI-agent implementation workflow. This is an independent project, not a claim that all source code was written manually.
+I worked out what the app should do, how it should be structured, and how it should feel to use. AI agents helped write the code. I like this way of building things: it lets me take an idea all the way to a working app without writing every line myself.
 
 **Feedback:** [report a bug or suggest a feature](https://github.com/evgsnr/api-commander/issues).
