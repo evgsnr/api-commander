@@ -65,6 +65,17 @@ A redesigned, more compact interface with more editor space, light and dark them
 
 **Upgrading:** close the application and preserve your user data (including the `data` folder) when replacing files. Keep the Portable application files together.
 
+## Tech stack
+
+| Component | Technologies |
+|---|---|
+| Desktop application | Electron |
+| Runtime | Node.js |
+| Interface | JavaScript, HTML, CSS |
+| Process communication | Electron IPC, Preload / contextBridge |
+| Local storage | AES-256-GCM, scrypt |
+| Integrations | HTTP/HTTPS, REST, SAP OData, CSRF, cookies |
+
 ## Architecture
 
 ```mermaid
