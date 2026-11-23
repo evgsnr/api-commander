@@ -2,77 +2,86 @@
 
 **🇷🇺 Русский** · [🇬🇧 English](README.en.md)
 
-**API Commander** — локальный десктопный HTTP API-клиент для Windows. Инструмент для повседневной работы с API: запросы, окружения, коллекции, авторизация и интеграции SAP OData — без обязательного облачного аккаунта.
+[![Version](https://img.shields.io/badge/version-2.1.0-7467ce)](https://github.com/evgsnr/api-commander/releases)
+![Platform](https://img.shields.io/badge/platform-Windows-555)
+![Electron](https://img.shields.io/badge/Electron-desktop-555)
+![Development](https://img.shields.io/badge/development-AI--assisted-555)
 
-**Версия:** 2.1.0 · **Платформа:** Windows · **Технологии:** Electron, Node.js, JavaScript, HTML, CSS
+**API Commander** — десктопный HTTP API-клиент для Windows, созданный для повседневной работы с REST API, коллекциями запросов и SAP OData. Рабочее пространство хранится локально: не нужны регистрация, облачный аккаунт или отдельный сервер.
 
-## Скачать
+**[⬇ Скачать API Commander для Windows](https://github.com/evgsnr/api-commander/releases/latest)** · [Все релизы](https://github.com/evgsnr/api-commander/releases)
 
-**[Скачать последнюю версию для Windows →](https://github.com/evgsnr/api-commander/releases/latest)**
+## Интерфейс
 
-Готовая Portable-сборка доступна в разделе [Releases](https://github.com/evgsnr/api-commander/releases). Распакуйте ZIP-архив и запустите `API Commander.exe`.
+| Тёмная тема | Светлая тема |
+|:---:|:---:|
+| ![Тёмная тема API Commander](screenshots/API-Commander-v2.1-calm-dark.png) | ![Светлая тема API Commander](screenshots/API-Commander-v2.1-calm-light.png) |
 
-## Скриншоты
+<details>
+<summary>Компактный режим</summary>
 
-### Тёмная тема
-![API Commander — тёмная тема](screenshots/API-Commander-v2.1-calm-dark.png)
+![Компактный интерфейс API Commander](screenshots/API-Commander-v2.1-calm-compact.png)
 
-### Светлая тема
-![API Commander — светлая тема](screenshots/API-Commander-v2.1-calm-light.png)
+</details>
 
-### Компактный интерфейс
-![API Commander — компактный интерфейс](screenshots/API-Commander-v2.1-calm-compact.png)
+## Для каких задач
 
-## Что умеет
+- **Повседневная работа с HTTP API:** запросы, параметры, заголовки, тела и просмотр ответов.
+- **Работа системного аналитика:** коллекции, окружения, переменные `{{name}}`, история, импорт готовых запросов.
+- **Интеграции с SAP Marketing / OData:** предварительное получение CSRF-токена, работа с cookies и повторное использование токена.
+- **Локальные рабочие пространства:** данные остаются на компьютере, без обязательной облачной синхронизации.
 
-- **HTTP/HTTPS:** GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS; query-параметры, заголовки, таймауты, отмена запросов и redirects.
-- **Коллекции и окружения:** вложенные папки, переменные `{{name}}`, история запросов.
-- **Авторизация:** Basic, Bearer, API Key; локальные профили учётных данных с доступом по коллекциям.
-- **SAP Marketing / OData:** автоматическое и ручное получение CSRF-токена, cookie-сессии и кеширование токенов.
-- **Тела запросов:** JSON, текст/XML, URL-encoded, GraphQL query/variables, multipart и бинарные файлы.
-- **Просмотр ответов:** форматирование, подсветка, поиск, заголовки, cookies, HTML preview.
-- **Импорт:** Postman Collection v2, Postman environments, OpenAPI JSON, cURL и собственные рабочие пространства.
-- **Проверки и Runner:** декларативные проверки ответов и последовательное выполнение коллекций.
-- **Локальное хранение:** шифрование рабочего пространства, ручная блокировка и автоблокировка.
+## Возможности
 
-## Версия 2.1.0 — Calm UI
+| Область | Реализовано |
+|---|---|
+| HTTP | GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS; таймауты, отмена, redirects |
+| Тела запросов | JSON, XML/текст, URL-encoded, GraphQL через HTTP, multipart, бинарные файлы |
+| Авторизация | Basic, Bearer, API Key; профили Basic-учётных данных |
+| Организация | Коллекции, вложенные папки, окружения, поиск, история, drag-and-drop |
+| Импорт | Postman Collection v2, Postman environments, OpenAPI JSON, cURL |
+| Ответы | JSON/XML/HTML/Text, Pretty/Raw, поиск, заголовки, cookies, HTML preview |
+| Автоматизация | Декларативные проверки ответов и последовательный Runner |
+| SAP OData | Автоматический/ручной CSRF fetch, cookie-сессии и кеш токенов |
+| Хранение | Локальный зашифрованный профиль, блокировка и автоблокировка |
 
-Компактный интерфейс со светлой и тёмной темами, приглушёнными акцентами, увеличенным пространством редактора и адаптивным расположением панелей запроса и ответа.
+## Что изменилось в v2.1.0 — Calm UI
 
-## Архитектура
+Переработан интерфейс: компактнее элементы управления, больше пространства для редактора, светлая и тёмная темы, а также адаптивное размещение запроса и ответа — рядом или друг под другом.
 
-Приложение использует Electron с разделением процессов:
-
-```mermaid
-flowchart LR
-  UI[Renderer / UI] --> P[Preload / contextBridge]
-  P --> M[Electron Main / IPC]
-  M --> V[Encrypted Vault]
-  M --> T[HTTP Transport / SAP CSRF]
-  T --> API[External HTTP APIs]
-```
-
-- **Renderer:** интерфейс, коллекции, редактор, история и Runner.
-- **Preload:** ограниченный мост между интерфейсом и привилегированным процессом.
-- **Main:** IPC, жизненный цикл приложения, операции с файлами и сетью.
-- **Vault:** локальное зашифрованное рабочее пространство.
-- **Transport / Engine:** HTTP-запросы, авторизация, cookies, CSRF и проверки ответов.
-
-Отдельный сервер, облачная регистрация и синхронизация не требуются.
+[История выпусков и файлы для скачивания](https://github.com/evgsnr/api-commander/releases)
 
 ## Установка
 
-Windows Portable-сборка предназначена для запуска после распаковки архива. Сохраняйте файлы приложения вместе, а при обновлении — каталог пользовательских данных.
+1. Перейди в **[последний релиз](https://github.com/evgsnr/api-commander/releases/latest)** и скачай ZIP-архив Windows Portable.
+2. Распакуй архив целиком в отдельную папку.
+3. Запусти `API Commander.exe`.
 
-> Актуальная сборка доступна в разделе [Releases](https://github.com/evgsnr/api-commander/releases).
+**Обновление:** закрой приложение и сохрани пользовательские данные (в частности, папку `data`) при замене файлов. Не запускай EXE отдельно от остальных файлов Portable-сборки.
 
-## Ограничения
+## Архитектура
 
-Это не полная замена Postman: нет OAuth 2.0 flow, gRPC, WebSocket, облачной синхронизации и выполнения Postman scripts. OpenAPI поддерживается в формате JSON с ограниченным разбором схем; полноценный OData batch-конструктор отсутствует.
+```mermaid
+flowchart LR
+    UI["Renderer · интерфейс"] --> PRE["Preload · contextBridge"]
+    PRE --> MAIN["Electron Main · IPC"]
+    MAIN --> VAULT["Encrypted Vault"]
+    MAIN --> ENGINE["HTTP Engine / Transport"]
+    ENGINE --> SAP["SAP CSRF / Cookies"]
+    ENGINE --> API["HTTP APIs"]
+```
 
-**Безопасность:** по исходному коду описано локальное шифрование AES-256-GCM с выводом ключа через scrypt. Это не утверждение о проведённом независимом аудите. Черновики могут теряться при аварийном завершении, а забытый пароль восстановить нельзя.
+Приложение построено на **Electron / Node.js**. Интерфейс работает в Renderer, привилегированные операции выполняются в Main через ограниченный IPC-мост. Запросы обрабатываются HTTP-движком; локальные данные хранятся в зашифрованном рабочем пространстве.
 
-## Как создавался проект
+## Важные ограничения
 
-API Commander создавался с использованием **AI-assisted development**. Автор отвечал за концепцию, требования, архитектурные решения, управление разработкой и проверку результата; реализация кода выполнялась с помощью AI-агентов.
+- Нет OAuth 2.0 flow, gRPC, WebSocket, облачной синхронизации и выполнения Postman scripts.
+- Импорт OpenAPI поддерживает JSON и не покрывает все возможности спецификации; специализированного конструктора OData batch нет.
+- Несохранённые изменения могут потеряться при аварийном завершении; восстановление забытого пароля не предусмотрено.
+- В документации исходников описано шифрование AES-256-GCM с выводом ключа через scrypt, **но независимый аудит безопасности не проводился**. Экспортированные запросы и файлы могут содержать секреты.
 
+## О разработке
+
+Проект создан в формате **AI-assisted development**: автор прорабатывал продуктовую концепцию, требования, архитектуру и управлял реализацией с помощью AI-агентов. Это самостоятельный проект, а не заявление о ручном написании всего исходного кода.
+
+**Обратная связь:** [сообщить о проблеме или предложить улучшение](https://github.com/evgsnr/api-commander/issues).
