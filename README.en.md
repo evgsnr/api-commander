@@ -1,11 +1,11 @@
 # API Commander
 
-[🇷🇺 Русский](README.md) · **🇬🇧 English**
+[Русский](README.md) · **English**
 
-[![Version](https://img.shields.io/badge/version-2.1.0-7467ce)](https://github.com/evgsnr/api-commander/releases)
-![Platform](https://img.shields.io/badge/platform-Windows-555)
-![Electron](https://img.shields.io/badge/Electron-desktop-555)
-![Development](https://img.shields.io/badge/development-AI--assisted-555)
+[![Version](https://img.shields.io/badge/version-2.1.0-7950c8)](https://github.com/evgsnr/api-commander/releases)
+![Platform](https://img.shields.io/badge/platform-Windows-0078d4)
+![Electron](https://img.shields.io/badge/Electron-desktop-00a5a5)
+![Development](https://img.shields.io/badge/development-AI--assisted-228b63)
 
 API Commander is a small desktop client for working with HTTP APIs.
 
