@@ -1,3 +1,5 @@
+<img src="assets/commander-mark.svg" alt="API Commander logo" width="72" align="right" />
+
 # API Commander
 
 [Русский](README.md) · **English**
