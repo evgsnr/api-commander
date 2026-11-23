@@ -2,69 +2,86 @@
 
 [🇷🇺 Русский](README.md) · **🇬🇧 English**
 
-**API Commander** is a local-first desktop HTTP API client for Windows, built for everyday API workflows: requests, environments, collections, authentication, and SAP OData integrations — without a mandatory cloud account.
+[![Version](https://img.shields.io/badge/version-2.1.0-7467ce)](https://github.com/evgsnr/api-commander/releases)
+![Platform](https://img.shields.io/badge/platform-Windows-555)
+![Electron](https://img.shields.io/badge/Electron-desktop-555)
+![Development](https://img.shields.io/badge/development-AI--assisted-555)
 
-**Version:** 2.1.0 · **Platform:** Windows · **Stack:** Electron, Node.js, JavaScript, HTML, CSS
+**API Commander** is a desktop HTTP API client for Windows, designed for everyday REST API workflows, request collections, and SAP OData integrations. Your workspace stays local — no account, cloud service, or separate server required.
 
-## Download
+**[⬇ Download API Commander for Windows](https://github.com/evgsnr/api-commander/releases/latest)** · [All releases](https://github.com/evgsnr/api-commander/releases)
 
-**[Download the latest Windows version →](https://github.com/evgsnr/api-commander/releases/latest)**
+## Interface
 
-The Portable Windows build is available under [Releases](https://github.com/evgsnr/api-commander/releases). Extract the ZIP archive and run `API Commander.exe`.
+| Dark theme | Light theme |
+|:---:|:---:|
+| ![API Commander dark theme](screenshots/API-Commander-v2.1-calm-dark.png) | ![API Commander light theme](screenshots/API-Commander-v2.1-calm-light.png) |
 
-## Screenshots
+<details>
+<summary>Compact layout</summary>
 
-### Dark theme
-![API Commander — dark theme](screenshots/API-Commander-v2.1-calm-dark.png)
+![API Commander compact layout](screenshots/API-Commander-v2.1-calm-compact.png)
 
-### Light theme
-![API Commander — light theme](screenshots/API-Commander-v2.1-calm-light.png)
+</details>
 
-### Compact layout
-![API Commander — compact layout](screenshots/API-Commander-v2.1-calm-compact.png)
+## What it's for
+
+- **Everyday HTTP API work:** requests, parameters, headers, bodies, and response inspection.
+- **System analysis workflows:** collections, environments, `{{name}}` variables, history, and importing existing requests.
+- **SAP Marketing / OData integrations:** CSRF-token prefetching, cookie handling, and token reuse.
+- **Local workspaces:** no mandatory cloud sync or remote account.
 
 ## Features
 
-- **HTTP/HTTPS:** GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS; query parameters, headers, timeouts, cancellation, and redirects.
-- **Collections and environments:** nested folders, `{{name}}` variables, and request history.
-- **Authentication:** Basic, Bearer, API Key, and locally stored credential profiles scoped to collections.
-- **SAP Marketing / OData:** automatic or manual CSRF-token fetching, cookie sessions, and token caching.
-- **Request bodies:** JSON, text/XML, URL-encoded forms, GraphQL queries/variables, multipart, and binary files.
-- **Responses:** formatting, highlighting, search, headers, cookies, and HTML preview.
-- **Import:** Postman Collection v2, Postman environments, OpenAPI JSON, cURL, and native workspaces.
-- **Assertions and Runner:** declarative response checks and sequential collection execution.
-- **Local storage:** encrypted workspace, manual lock, and configurable auto-lock.
+| Area | Implemented |
+|---|---|
+| HTTP | GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS; timeouts, cancellation, redirects |
+| Request bodies | JSON, XML/text, URL-encoded, GraphQL over HTTP, multipart, binary files |
+| Authentication | Basic, Bearer, API Key; Basic credential profiles |
+| Organization | Collections, nested folders, environments, search, history, drag-and-drop |
+| Import | Postman Collection v2, Postman environments, OpenAPI JSON, cURL |
+| Responses | JSON/XML/HTML/Text, Pretty/Raw, search, headers, cookies, HTML preview |
+| Automation | Declarative response assertions and sequential collection Runner |
+| SAP OData | Automatic/manual CSRF fetch, cookie sessions, token caching |
+| Storage | Local encrypted workspace, manual and automatic locking |
 
-## Version 2.1.0 — Calm UI
+## What's new in v2.1.0 — Calm UI
 
-A compact interface with light/dark themes, muted accents, more editor space, and adaptive request/response panels.
+A redesigned, more compact interface with more editor space, light and dark themes, and adaptive side-by-side or stacked request/response panels.
+
+[Release history and downloads](https://github.com/evgsnr/api-commander/releases)
+
+## Installation
+
+1. Open the **[latest release](https://github.com/evgsnr/api-commander/releases/latest)** and download the Windows Portable ZIP.
+2. Extract the entire archive into a folder.
+3. Launch `API Commander.exe`.
+
+**Upgrading:** close the application and preserve your user data (including the `data` folder) when replacing files. Keep the Portable application files together.
 
 ## Architecture
 
 ```mermaid
 flowchart LR
-  UI[Renderer / UI] --> P[Preload / contextBridge]
-  P --> M[Electron Main / IPC]
-  M --> V[Encrypted Vault]
-  M --> T[HTTP Transport / SAP CSRF]
-  T --> API[External HTTP APIs]
+    UI["Renderer · UI"] --> PRE["Preload · contextBridge"]
+    PRE --> MAIN["Electron Main · IPC"]
+    MAIN --> VAULT["Encrypted Vault"]
+    MAIN --> ENGINE["HTTP Engine / Transport"]
+    ENGINE --> SAP["SAP CSRF / Cookies"]
+    ENGINE --> API["HTTP APIs"]
 ```
 
-The renderer handles the UI and request workspace. Preload exposes a limited bridge. Main handles privileged operations. Vault manages local encrypted storage, while Transport and Engine handle HTTP requests, cookies, authentication, CSRF, and response assertions. No separate server or cloud sign-up is required.
+Built with **Electron / Node.js**. The Renderer handles the UI; privileged operations run in Main through a limited IPC bridge. An HTTP engine handles requests, while an encrypted local workspace stores application data.
 
-## Installation
+## Known limitations
 
-The Windows Portable build is designed to run after extracting its archive. Keep the application files together and preserve user data when upgrading.
-
-> The current build is available under [Releases](https://github.com/evgsnr/api-commander/releases).
-
-## Limitations
-
-API Commander is not a full Postman replacement: OAuth 2.0 flows, gRPC, WebSocket, cloud sync, and Postman script execution are not implemented. OpenAPI JSON import has limited schema support; there is no dedicated OData batch builder.
-
-**Security:** source documentation describes AES-256-GCM local encryption with scrypt key derivation. This does not imply an independent security audit. Unsaved drafts may be lost after crashes, and forgotten passwords cannot be recovered.
+- No OAuth 2.0 flow, gRPC, WebSocket, cloud sync, or Postman script execution.
+- OpenAPI import supports JSON but not the entire specification; there is no dedicated OData batch builder.
+- Unsaved edits may be lost after a crash, and forgotten passwords cannot be recovered.
+- Source documentation describes AES-256-GCM encryption with scrypt key derivation, **but no independent security audit has been performed**. Exported requests and files may contain secrets.
 
 ## Development approach
 
-API Commander was built using **AI-assisted development**. The author led the product concept, requirements, architecture, development orchestration, and validation, while AI agents implemented code.
+Built with **AI-assisted development**: the author led the product concept, requirements, architecture, and AI-agent implementation workflow. This is an independent project, not a claim that all source code was written manually.
 
+**Feedback:** [report a bug or suggest a feature](https://github.com/evgsnr/api-commander/issues).
