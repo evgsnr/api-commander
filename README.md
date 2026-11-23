@@ -6,6 +6,23 @@
 
 **Версия:** 2.1.0 · **Платформа:** Windows · **Технологии:** Electron, Node.js, JavaScript, HTML, CSS
 
+## Скачать
+
+**[Скачать последнюю версию для Windows →](https://github.com/evgsnr/api-commander/releases/latest)**
+
+Готовая Portable-сборка доступна в разделе [Releases](https://github.com/evgsnr/api-commander/releases). Распакуйте ZIP-архив и запустите `API Commander.exe`.
+
+## Скриншоты
+
+### Тёмная тема
+![API Commander — тёмная тема](screenshots/API-Commander-v2.1-calm-dark.png)
+
+### Светлая тема
+![API Commander — светлая тема](screenshots/API-Commander-v2.1-calm-light.png)
+
+### Компактный интерфейс
+![API Commander — компактный интерфейс](screenshots/API-Commander-v2.1-calm-compact.png)
+
 ## Что умеет
 
 - **HTTP/HTTPS:** GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS; query-параметры, заголовки, таймауты, отмена запросов и redirects.
@@ -47,7 +64,7 @@ flowchart LR
 
 Windows Portable-сборка предназначена для запуска после распаковки архива. Сохраняйте файлы приложения вместе, а при обновлении — каталог пользовательских данных.
 
-> Публичный релиз для скачивания будет добавлен отдельно. Сейчас репозиторий оформлен как страница проекта.
+> Актуальная сборка доступна в разделе [Releases](https://github.com/evgsnr/api-commander/releases).
 
 ## Ограничения
 
