@@ -6,6 +6,23 @@
 
 **Version:** 2.1.0 · **Platform:** Windows · **Stack:** Electron, Node.js, JavaScript, HTML, CSS
 
+## Download
+
+**[Download the latest Windows version →](https://github.com/evgsnr/api-commander/releases/latest)**
+
+The Portable Windows build is available under [Releases](https://github.com/evgsnr/api-commander/releases). Extract the ZIP archive and run `API Commander.exe`.
+
+## Screenshots
+
+### Dark theme
+![API Commander — dark theme](screenshots/API-Commander-v2.1-calm-dark.png)
+
+### Light theme
+![API Commander — light theme](screenshots/API-Commander-v2.1-calm-light.png)
+
+### Compact layout
+![API Commander — compact layout](screenshots/API-Commander-v2.1-calm-compact.png)
+
 ## Features
 
 - **HTTP/HTTPS:** GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS; query parameters, headers, timeouts, cancellation, and redirects.
@@ -39,7 +56,7 @@ The renderer handles the UI and request workspace. Preload exposes a limited bri
 
 The Windows Portable build is designed to run after extracting its archive. Keep the application files together and preserve user data when upgrading.
 
-> A public downloadable release will be added separately. This repository currently serves as the project page.
+> The current build is available under [Releases](https://github.com/evgsnr/api-commander/releases).
 
 ## Limitations
 
