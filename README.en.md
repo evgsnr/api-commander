@@ -51,6 +51,3 @@ API Commander is not a full Postman replacement: OAuth 2.0 flows, gRPC, WebSocke
 
 API Commander was built using **AI-assisted development**. The author led the product concept, requirements, architecture, development orchestration, and validation, while AI agents implemented code.
 
----
-
-*API Commander — less overhead, more API work.*
